@@ -3,8 +3,8 @@ import time
 print("preparing phy_first helloooo!!!")
 
 # 简单的函数定义
-def getGreeting(who = "nobody"):
-    return "hellloo " + who
+def getGreeting(who = "nobody", what="hellloo"):
+    return what + " " + who
 
 # 返回 lambda 的函数定义
 def getBye(who = "anyone"):
@@ -12,7 +12,14 @@ def getBye(who = "anyone"):
 
 # lambda 函数作为参数的函数定义
 def say(what = lambda when: "" + when + " is a good"):
-    return what("tomrrow")
+    def temp(b):
+        return "temp " + b
+    def invoker(b=True):
+        if b and 4:
+            return temp(what("tomrrow"))
+        else:
+            return "my bad"
+    return invoker
 
 # 带默认参数的函数定义
 def twoParam(a = "aa", b = "bb"):
